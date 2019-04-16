@@ -1,4 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="/opt/feed.xml" rel="self" type="application/atom+xml" /><link href="/opt/" rel="alternate" type="text/html" /><updated>2019-04-16T14:58:52-05:00</updated><id>/opt/feed.xml</id><title type="html">Michael Loula</title><subtitle>I plan on filling this page with visualizations as well as some other miscellaneous projects.</subtitle><entry><title type="html">Optimization Series: #1 Divine Proportions</title><link href="/opt/stuff/2019/03/29/gss.html" rel="alternate" type="text/html" title="Optimization Series: #1 Divine Proportions" /><published>2019-03-29T13:37:44-05:00</published><updated>2019-03-29T13:37:44-05:00</updated><id>/opt/stuff/2019/03/29/gss</id><content type="html" xml:base="/opt/stuff/2019/03/29/gss.html">&lt;h2 id=&quot;golden-section-search&quot;&gt;Golden Section Search&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="/opt/feed.xml" rel="self" type="application/atom+xml" /><link href="/opt/" rel="alternate" type="text/html" /><updated>2019-04-16T15:22:40-05:00</updated><id>/opt/feed.xml</id><title type="html">Michael Loula</title><subtitle>I plan on filling this page with visualizations as well as some other miscellaneous projects.</subtitle><entry><title type="html">Optimization Series: #2 Newton’s Method</title><link href="/opt/stuff/2019/04/15/newt.html" rel="alternate" type="text/html" title="Optimization Series: #2 Newton's Method" /><published>2019-04-15T05:37:44-05:00</published><updated>2019-04-15T05:37:44-05:00</updated><id>/opt/stuff/2019/04/15/newt</id><content type="html" xml:base="/opt/stuff/2019/04/15/newt.html">&lt;script type=&quot;text/x-mathjax-config&quot;&gt;
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: &quot;AMS&quot;
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$'], ['\(', '\)'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    }
+  });
+&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;
+&lt;/script&gt;
+
+&lt;h1 id=&quot;newtons-method-for-root-finding&quot;&gt;Newton’s Method for Root Finding&lt;/h1&gt;
+
+&lt;p&gt;Given function defined on domain &lt;script type=&quot;math/tex&quot;&gt;f: (a,b) \rightarrow \mathbb{R}&lt;/script&gt; where &lt;script type=&quot;math/tex&quot;&gt;f \in D(a,b)&lt;/script&gt;
+our goal is to find &lt;script type=&quot;math/tex&quot;&gt;x^* \in (a,b)&lt;/script&gt; such that &lt;script type=&quot;math/tex&quot;&gt;f(x^*) = 0&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let’s define a function to work with and investigate: &lt;script type=&quot;math/tex&quot;&gt;f: (2,6) \rightarrow \mathbb{R}&lt;/script&gt; &lt;script type=&quot;math/tex&quot;&gt;f(x) = -x \sin(x)&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Newtons method seeks to find a root by iterating over the equation &lt;script type=&quot;math/tex&quot;&gt;x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;In this case we can use basic calculus to derive a general form &lt;script type=&quot;math/tex&quot;&gt;f'(x) = -\sin(x) + -x\cos(x)&lt;/script&gt; Thus the form we need is &lt;script type=&quot;math/tex&quot;&gt;x_{n+1} = x_n - \frac{x_n\sin(x_n)}{\sin(x_n) + x_n\cos(x_n)}&lt;/script&gt;
+Guess &lt;script type=&quot;math/tex&quot;&gt;x_0 = 3&lt;/script&gt; as the average of the interval.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'root = '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root = 3.141592653589793
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As we can see, &lt;script type=&quot;math/tex&quot;&gt;x^* \approx \pi&lt;/script&gt; We can verify this analytically. &lt;script type=&quot;math/tex&quot;&gt;sin(\pi) = 0 \implies -\pi sin(\pi) = 0&lt;/script&gt; so we can say &lt;script type=&quot;math/tex&quot;&gt;x^* = \pi&lt;/script&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;newtons-method-for-optimization&quot;&gt;Newton’s Method for Optimization&lt;/h1&gt;
+
+&lt;p&gt;Can we adapt this to find &lt;script type=&quot;math/tex&quot;&gt;x^*&lt;/script&gt; where  &lt;script type=&quot;math/tex&quot;&gt;f'(x^*) = 0 \ ?&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;The answer is yes, in fact the only extra work is requires is calculating &lt;script type=&quot;math/tex&quot;&gt;f''(x_k)&lt;/script&gt; each iteration. We can just reapply the definitions. &lt;script type=&quot;math/tex&quot;&gt;x_{n+1} = x_n - \frac{f'(x_n)}{f''(x_n)}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Case: &lt;script type=&quot;math/tex&quot;&gt;f(x) = -x \sin(x)&lt;/script&gt; from before: &lt;script type=&quot;math/tex&quot;&gt;f'(x) = -\sin(x) + -x\cos(x)&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;f''(x) = -\cos(x) - \cos(x) + x \sin(x) = -2 \cos(x) + x\sin(x)&lt;/script&gt;
+So we iterate over
+&lt;script type=&quot;math/tex&quot;&gt;x_{n+1} = x_n - \frac{\sin(x) + x\cos(x)}{2 \cos(x) - x\sin(x)}&lt;/script&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'root = '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root = 4.913180439434884
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linspace&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;xs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ys&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'ro'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[&amp;lt;matplotlib.lines.Line2D at 0x1076e4550&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;output_11_1.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We have succesfully maximized our function!&lt;/p&gt;</content><author><name></name></author><summary type="html">Newton’s Method for Root Finding</summary></entry><entry><title type="html">Optimization Series: #1 Divine Proportions</title><link href="/opt/stuff/2019/03/29/gss.html" rel="alternate" type="text/html" title="Optimization Series: #1 Divine Proportions" /><published>2019-03-29T13:37:44-05:00</published><updated>2019-03-29T13:37:44-05:00</updated><id>/opt/stuff/2019/03/29/gss</id><content type="html" xml:base="/opt/stuff/2019/03/29/gss.html">&lt;h2 id=&quot;golden-section-search&quot;&gt;Golden Section Search&lt;/h2&gt;
 &lt;script type=&quot;text/x-mathjax-config&quot;&gt;
   MathJax.Hub.Config({
     TeX: {
