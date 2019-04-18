@@ -78,7 +78,7 @@
 <p>In N-d, the process is similar using basic matrix calculus:</p>
 
 <ol>
-  <li>Build quadratic taylor approximation (where H is the hessian)
+  <li>Build quadratic taylor approximation where H is the hessian
  <script type="math/tex">\tilde{f}(x) := f(x+s) \approx \nabla f(x)^Ts + \frac{1}{2}s^TH(x)s</script></li>
   <li>Solve for <script type="math/tex">\nabla \tilde{f}(s) = 0</script>
  <script type="math/tex">H(x)s = -\nabla f(x) \implies s = -H^{-1}(x)\nabla f(x)</script></li>
@@ -90,7 +90,7 @@
     <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">11</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">7</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 </code></pre></div></div>
 
-<p>This is <a href="https://en.wikipedia.org/wiki/Himmelblau%27s_function">Himmelblau’s Function</a>, a multimodal function (see below) that can illustrate well the local convergence of Newton’s method (big thanks to Morn the Gorn of Wikipedia for their plotting code).</p>
+<p>This is <a href="https://en.wikipedia.org/wiki/Himmelblau%27s_function">Himmelblau’s Function</a>, a multimodal function that can illustrate well the local convergence of Newton’s method.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
@@ -282,7 +282,7 @@ f(x,y) =0.0
 
 <p>As another exercise/sidenote can you think of any ways we could automatically find all these minima?</p>
 
-<p>Once again I give thanks to Morn the Gorn, as well as Andreas Klöckner for his CS 450 course materials.</p>
+<p>I give thanks to Morn the Gorn, as well as Andreas Klöckner for his CS 450 course materials.</p>
 
   </div><a class="u-url" href="/opt/stuff/2019/04/17/newtnd.html" hidden></a>
 </article>
