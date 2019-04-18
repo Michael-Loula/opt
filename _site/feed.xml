@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="/opt/feed.xml" rel="self" type="application/atom+xml" /><link href="/opt/" rel="alternate" type="text/html" /><updated>2019-04-18T11:31:03-05:00</updated><id>/opt/feed.xml</id><title type="html">Michael Loula</title><subtitle>I plan on filling this page with visualizations as well as some other miscellaneous projects.</subtitle><entry><title type="html">Optimization Series: #3 Newton’s Method in n Dimensions</title><link href="/opt/stuff/2019/04/17/newtnd.html" rel="alternate" type="text/html" title="Optimization Series: #3 Newton's Method in n Dimensions" /><published>2019-04-17T13:37:44-05:00</published><updated>2019-04-17T13:37:44-05:00</updated><id>/opt/stuff/2019/04/17/newtnd</id><content type="html" xml:base="/opt/stuff/2019/04/17/newtnd.html">&lt;script type=&quot;text/x-mathjax-config&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="/opt/feed.xml" rel="self" type="application/atom+xml" /><link href="/opt/" rel="alternate" type="text/html" /><updated>2019-04-18T11:33:56-05:00</updated><id>/opt/feed.xml</id><title type="html">Michael Loula</title><subtitle>I plan on filling this page with visualizations as well as some other miscellaneous projects.</subtitle><entry><title type="html">Newton</title><link href="/opt/stuff/2019/04/17/newtnd.html" rel="alternate" type="text/html" title="Newton" /><published>2019-04-17T00:00:00-05:00</published><updated>2019-04-17T00:00:00-05:00</updated><id>/opt/stuff/2019/04/17/newtnd</id><content type="html" xml:base="/opt/stuff/2019/04/17/newtnd.html">&lt;h2 id=&quot;like-in-one-dimension-this-can-be-used-for-either-root-finding-or-optimization-but-for-this-we-will-focus-only-on-optimization&quot;&gt;Like in one dimension, this can be used for either root-finding or optimization, but for this, we will focus only on optimization.&lt;/h2&gt;
+&lt;script type=&quot;text/x-mathjax-config&quot;&gt;
   MathJax.Hub.Config({
     TeX: {
       equationNumbers: {
@@ -15,8 +16,6 @@
 
 &lt;script type=&quot;text/javascript&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;
 &lt;/script&gt;
-
-&lt;h2 id=&quot;like-in-one-dimension-this-can-be-used-for-either-root-finding-or-optimization-but-for-this-we-will-focus-only-on-optimization&quot;&gt;Like in one dimension, this can be used for either root-finding or optimization, but for this, we will focus only on optimization.&lt;/h2&gt;
 
 &lt;p&gt;In 1d, we derive Newton’s method as follows:&lt;/p&gt;
 
@@ -236,7 +235,7 @@ f(x,y) =0.0
 
 &lt;p&gt;As another exercise/sidenote can you think of any ways we could automatically find all these minima?&lt;/p&gt;
 
-&lt;p&gt;Once again I give thanks to Morn the Gorn, as well as Andreas Klöckner for his CS 450 course materials.&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Optimization Series: #2 Newton’s Method</title><link href="/opt/stuff/2019/04/15/newt.html" rel="alternate" type="text/html" title="Optimization Series: #2 Newton's Method" /><published>2019-04-15T05:37:44-05:00</published><updated>2019-04-15T05:37:44-05:00</updated><id>/opt/stuff/2019/04/15/newt</id><content type="html" xml:base="/opt/stuff/2019/04/15/newt.html">&lt;script type=&quot;text/x-mathjax-config&quot;&gt;
+&lt;p&gt;Once again I give thanks to Morn the Gorn, as well as Andreas Klöckner for his CS 450 course materials.&lt;/p&gt;</content><author><name></name></author><summary type="html">Like in one dimension, this can be used for either root-finding or optimization, but for this, we will focus only on optimization. In 1d, we derive Newton’s method as follows:</summary></entry><entry><title type="html">Optimization Series: #2 Newton’s Method</title><link href="/opt/stuff/2019/04/15/newt.html" rel="alternate" type="text/html" title="Optimization Series: #2 Newton's Method" /><published>2019-04-15T05:37:44-05:00</published><updated>2019-04-15T05:37:44-05:00</updated><id>/opt/stuff/2019/04/15/newt</id><content type="html" xml:base="/opt/stuff/2019/04/15/newt.html">&lt;script type=&quot;text/x-mathjax-config&quot;&gt;
   MathJax.Hub.Config({
     TeX: {
       equationNumbers: {
